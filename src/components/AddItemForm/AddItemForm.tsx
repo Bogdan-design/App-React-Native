@@ -45,7 +45,7 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
                     onSubmitEditing={onKeyPressHandler}
                     placeholder="Type something..."
                     placeholderTextColor={useThemeColor({}, 'icon')}
-                    disabled={disabled}
+                    editable={!disabled}
                     accessibilityLabel="Item title input"
                 />
                 {error && <ThemedText style={styles.errorText}>{error}</ThemedText>}
