@@ -6,9 +6,9 @@ import {ThemedText} from '@/components/ThemedText';
 import {ThemedView} from '@/components/ThemedView';
 import {Checkbox} from "expo-checkbox";
 import {Input} from "@/components/input/Input";
-import {MainApp} from "@/src/app/MainApp";
+import {MainApp} from "@/src/state/MainApp";
 import {Provider} from "react-redux";
-import {store} from '@/src/app/store'
+import {store} from '@/src/state/store'
 
 type TasksType = {
     id: number,
