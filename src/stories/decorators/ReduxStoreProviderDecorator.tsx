@@ -4,9 +4,9 @@
 // import {tasksReducer} from '../../features/TodolistsList/tasks-reducer'
 // import {todolistsReducer} from '../../features/TodolistsList/todolists-reducer'
 // import {v1} from 'uuid'
-// import {AppRootStateType} from '../../app/store'
+// import {AppRootStateType} from '../../core/store'
 // import {TaskPriorities, TaskStatuses} from '../../api/todolists-api'
-// import {appReducer} from '../../app/app-reducer'
+// import {appReducer} from '../../core/app-reducer'
 // import thunkMiddleware from 'redux-thunk'
 //
 // const rootReducer = combineReducers({

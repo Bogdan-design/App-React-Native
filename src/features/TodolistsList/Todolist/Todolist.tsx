@@ -5,9 +5,12 @@ import {Task} from './Task/Task'
 import {TaskStatuses, TaskType} from '@/src/api/todolists-api'
 import {FilterValuesType, TodolistDomainType} from '../todolists-reducer'
 import {fetchTasksTC} from '../tasks-reducer'
-import {useAppDispatch} from "@/src/app/store";
+import {useAppDispatch} from "@/src/core/store";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
+import {TouchableOpacity} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
+import {useThemeColor} from "@/hooks/useThemeColor";
 
 type PropsType = {
     todolist: TodolistDomainType
@@ -22,7 +25,7 @@ type PropsType = {
 }
 
 export const Todolist = React.memo(function ({...props}: PropsType) {
-    console.log('Todolist called')
+    const iconColor = useThemeColor({}, 'text');
 
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -55,12 +58,19 @@ export const Todolist = React.memo(function ({...props}: PropsType) {
         tasksForTodolist = props.tasks.filter(t => t.status === TaskStatuses.Completed)
     }
 
-    return <ThemedView>
-        <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
-        <ThemedText>Del</ThemedText>
-            {/*<IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>*/}
-            {/*    <Delete/>*/}
-            {/*</IconButton>*/}
+    return <ThemedView style={{paddingBottom: 20}}>
+        <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10}}>
+            <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle} />
+            <TouchableOpacity
+                onPress={removeTodolist}
+                disabled={props.todolist.entityStatus === 'loading'}
+                accessibilityLabel={`Delete todolist ${props.todolist.title}`}
+                accessibilityRole="button"
+                style={{padding: 8}}
+            >
+                <Ionicons name="close-circle-outline" size={24} color={iconColor} />
+            </TouchableOpacity>
+        </ThemedView>
 
         <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'}/>
         <ThemedView>

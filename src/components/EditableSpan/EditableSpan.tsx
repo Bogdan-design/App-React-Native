@@ -1,5 +1,7 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {ThemedText} from "@/components/ThemedText";
+import {TextInput, StyleSheet} from "react-native";
+import {useThemeColor} from "@/hooks/useThemeColor";
 
 type EditableSpanPropsType = {
     value: string
@@ -7,9 +9,9 @@ type EditableSpanPropsType = {
 }
 
 export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
-    // console.log('EditableSpan called');
     let [editMode, setEditMode] = useState(false);
     let [title, setTitle] = useState(props.value);
+    const color = useThemeColor({}, 'text');
 
     const activateEditMode = () => {
         setEditMode(true);
@@ -19,17 +21,34 @@ export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
         setEditMode(false);
         props.onChange(title);
     }
-    const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
+    const changeTitle = (value: string) => {
+        setTitle(value)
     }
 
     return editMode
-        ? <ThemedText>input</ThemedText>
+        ? <TextInput
+            value={title}
+            onChangeText={changeTitle}
+            autoFocus
+            onBlur={activateViewMode}
+            style={[styles.input, {color}]}
+          />
         : <ThemedText
-            // onDoubleClick={activateEditMode}
+            onPress={activateEditMode}
+            style={{flex: 1}}
         >
             {props.value}
     </ThemedText>
 });
+
+const styles = StyleSheet.create({
+    input: {
+        fontSize: 16,
+        padding: 4,
+        flex: 1,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc'
+    }
+})
 
 // <TextField value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode}/>

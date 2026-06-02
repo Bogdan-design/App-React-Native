@@ -1,6 +1,9 @@
-import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import React, { useState } from 'react';
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
+import {TextInput, TouchableOpacity, StyleSheet} from "react-native";
+import {Ionicons} from "@expo/vector-icons";
+import {useThemeColor} from "@/hooks/useThemeColor";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -8,10 +11,9 @@ type AddItemFormPropsType = {
 }
 
 export const AddItemForm = React.memo(function ({addItem, disabled = false}: AddItemFormPropsType) {
-    // console.log('AddItemForm called')
-
     let [title, setTitle] = useState('')
     let [error, setError] = useState<string | null>(null)
+    const color = useThemeColor({}, 'text');
 
     const addItemHandler = () => {
         if (title.trim() !== '') {
@@ -22,33 +24,64 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
         }
     }
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-    }
-
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    const onChangeHandler = (text: string) => {
         if (error !== null) {
             setError(null);
         }
-        if (e.charCode === 13) {
-            addItemHandler();
-        }
+        setTitle(text)
     }
 
-    return <ThemedView>
-        <ThemedText>input</ThemedText>
-        <ThemedText>add</ThemedText>
-        {/*<TextField variant="outlined"*/}
-        {/*           disabled={disabled}*/}
-        {/*           error={!!error}*/}
-        {/*           value={title}*/}
-        {/*           onChange={onChangeHandler}*/}
-        {/*           onKeyPress={onKeyPressHandler}*/}
-        {/*           label="Title"*/}
-        {/*           helperText={error}*/}
-        {/*/>*/}
-        {/*<IconButton color="primary" onClick={addItemHandler} disabled={disabled}>*/}
-        {/*    <AddBox/>*/}
-        {/*</IconButton>*/}
+    return <ThemedView style={styles.container}>
+        <ThemedView style={styles.inputContainer}>
+            <TextInput
+                style={[styles.input, {color}, error ? styles.errorInput : null]}
+                value={title}
+                onChangeText={onChangeHandler}
+                placeholder="Add new item..."
+                placeholderTextColor="#999"
+                editable={!disabled}
+            />
+            {error && <ThemedText style={styles.errorText}>{error}</ThemedText>}
+        </ThemedView>
+        <TouchableOpacity
+            onPress={addItemHandler}
+            disabled={disabled}
+            accessibilityLabel="Add item"
+            accessibilityRole="button"
+            style={[styles.button, disabled ? styles.disabledButton : null]}
+        >
+            <Ionicons name="add-circle-outline" size={32} color={disabled ? "#ccc" : color} />
+        </TouchableOpacity>
     </ThemedView>
+})
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
+    },
+    inputContainer: {
+        flex: 1,
+    },
+    input: {
+        fontSize: 16,
+        padding: 8,
+        borderWidth: 1,
+        borderColor: '#ccc',
+        borderRadius: 4,
+    },
+    errorInput: {
+        borderColor: 'red',
+    },
+    errorText: {
+        color: 'red',
+        fontSize: 12,
+    },
+    button: {
+        padding: 4,
+    },
+    disabledButton: {
+        opacity: 0.5,
+    }
 })

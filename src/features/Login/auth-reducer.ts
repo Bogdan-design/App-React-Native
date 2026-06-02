@@ -1,5 +1,5 @@
 import {Dispatch} from 'redux'
-import {SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../../app/app-reducer'
+import {SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../../core/app-reducer'
 import {authAPI, LoginParamsType} from '../../api/todolists-api'
 import {handleServerAppError, handleServerNetworkError} from '../../utils/error-utils'
 
