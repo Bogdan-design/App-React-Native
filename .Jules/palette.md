@@ -1,7 +1,7 @@
-## 2025-05-15 - Redux Thunk and Expo Router prioritisation
-**Learning:** For Redux Thunk v3+ integration, use the named import: import { thunk as thunkMiddleware } from 'redux-thunk'. Also, move test files and Storybook files outside the routing tree (e.g., to __tests__ subdirectories) to avoid rendering errors in Expo Router.
-**Action:** Always check Redux Thunk import style and move non-route files out of the app directory.
+## 2025-06-02 - Expo Router and src/app Conflict
+**Learning:** Expo Router may prioritize `src/app` over the root `app` directory if both exist, leading to rendering errors if `src/app` contains non-routing files like `store.ts`.
+**Action:** Rename internal app logic directories (e.g., to `src/core`) to avoid conflicts with filesystem-based routing.
 
-## 2025-05-15 - React Native Input and Checkbox Events
-**Learning:** React Native component event handlers use onChangeText for TextInput and onValueChange for Checkbox; web-standard onChange and checked properties from HTML inputs are incompatible.
-**Action:** Use native event props for input components in React Native.
+## 2025-06-02 - React Native Accessibility and Placeholders
+**Learning:** Initial ports from web often contain text placeholders and invalid nesting (e.g., View inside Text). Icon-only buttons must use `TouchableOpacity` with `accessibilityLabel` and `accessibilityRole="button"`.
+**Action:** Replace placeholders with native components and ensure proper accessibility props.

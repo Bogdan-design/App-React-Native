@@ -1,11 +1,11 @@
-import React, {useCallback} from 'react'
-import {EditableSpan} from '@/src/components/EditableSpan/EditableSpan'
-import {TaskStatuses, TaskType} from '@/src/api/todolists-api'
-import {ThemedView} from "@/components/ThemedView";
-import {Checkbox} from "expo-checkbox";
-import {Ionicons} from "@expo/vector-icons";
-import {useThemeColor} from "@/hooks/useThemeColor";
-import {TouchableOpacity} from "react-native";
+import React, {useCallback} from "react"
+import {EditableSpan} from "@/src/components/EditableSpan/EditableSpan"
+import {TaskStatuses, TaskType} from "@/src/api/todolists-api"
+import {ThemedView} from "@/components/ThemedView"
+import {Checkbox} from "expo-checkbox"
+import {Ionicons} from "@expo/vector-icons"
+import {useThemeColor} from "@/hooks/useThemeColor"
+import {TouchableOpacity} from "react-native"
 
 type TaskPropsType = {
     task: TaskType
@@ -15,7 +15,7 @@ type TaskPropsType = {
     removeTask: (taskId: string, todolistId: string) => void
 }
 export const Task = React.memo((props: TaskPropsType) => {
-    const iconColor = useThemeColor({}, 'text');
+    const iconColor = useThemeColor({}, "text");
 
     const onClickHandler = useCallback(() => props.removeTask(props.task.id, props.todolistId), [props.removeTask, props.task.id, props.todolistId]);
 
@@ -27,7 +27,7 @@ export const Task = React.memo((props: TaskPropsType) => {
         props.changeTaskTitle(props.task.id, newValue, props.todolistId)
     }, [props.changeTaskTitle, props.task.id, props.todolistId]);
 
-    return <ThemedView key={props.task.id} style={{flexDirection: 'row', alignItems: 'center', paddingVertical: 4, gap: 8}}>
+    return <ThemedView key={props.task.id} style={{flexDirection: "row", alignItems: "center", paddingVertical: 4, gap: 8}}>
         <Checkbox
             value={props.task.status === TaskStatuses.Completed}
             onValueChange={onChangeHandler}
@@ -37,7 +37,7 @@ export const Task = React.memo((props: TaskPropsType) => {
 
         <TouchableOpacity
             onPress={onClickHandler}
-            accessibilityLabel={`Delete task ${props.task.title}`}
+            accessibilityLabel={"Delete task " + props.task.title}
             accessibilityRole="button"
             style={{padding: 8}}
         >

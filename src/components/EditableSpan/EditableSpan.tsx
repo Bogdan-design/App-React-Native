@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState} from "react";
 import {ThemedText} from "@/components/ThemedText";
 import {TextInput, StyleSheet} from "react-native";
 import {useThemeColor} from "@/hooks/useThemeColor";
@@ -11,7 +11,7 @@ type EditableSpanPropsType = {
 export const EditableSpan = React.memo(function (props: EditableSpanPropsType) {
     let [editMode, setEditMode] = useState(false);
     let [title, setTitle] = useState(props.value);
-    const color = useThemeColor({}, 'text');
+    const color = useThemeColor({}, "text");
 
     const activateEditMode = () => {
         setEditMode(true);
@@ -47,8 +47,6 @@ const styles = StyleSheet.create({
         padding: 4,
         flex: 1,
         borderBottomWidth: 1,
-        borderBottomColor: '#ccc'
+        borderBottomColor: "#ccc"
     }
 })
-
-// <TextField value={title} onChange={changeTitle} autoFocus onBlur={activateViewMode}/>

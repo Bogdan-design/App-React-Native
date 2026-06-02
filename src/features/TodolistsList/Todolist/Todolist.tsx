@@ -25,7 +25,8 @@ type PropsType = {
 }
 
 export const Todolist = React.memo(function ({...props}: PropsType) {
-    const iconColor = useThemeColor({}, 'text');
+    const iconColor = useThemeColor({}, "text");
+    console.log('Todolist called')
 
     const dispatch = useAppDispatch()
     useEffect(() => {
@@ -59,18 +60,21 @@ export const Todolist = React.memo(function ({...props}: PropsType) {
     }
 
     return <ThemedView style={{paddingBottom: 20}}>
-        <ThemedView style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10}}>
+        <ThemedView style={{flexDirection: "row", alignItems: "center", justifyContent: "space-between", marginBottom: 10}}>
             <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle} />
             <TouchableOpacity
                 onPress={removeTodolist}
-                disabled={props.todolist.entityStatus === 'loading'}
-                accessibilityLabel={`Delete todolist ${props.todolist.title}`}
+                disabled={props.todolist.entityStatus === "loading"}
+                accessibilityLabel={"Delete todolist " + props.todolist.title}
                 accessibilityRole="button"
                 style={{padding: 8}}
             >
                 <Ionicons name="close-circle-outline" size={24} color={iconColor} />
             </TouchableOpacity>
         </ThemedView>
+            {/*<IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>*/}
+            {/*    <Delete/>*/}
+            {/*</IconButton>*/}
 
         <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'}/>
         <ThemedView>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 import {TextInput, TouchableOpacity, StyleSheet} from "react-native";
@@ -11,16 +11,16 @@ type AddItemFormPropsType = {
 }
 
 export const AddItemForm = React.memo(function ({addItem, disabled = false}: AddItemFormPropsType) {
-    let [title, setTitle] = useState('')
+    let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
-    const color = useThemeColor({}, 'text');
+    const color = useThemeColor({}, "text");
 
     const addItemHandler = () => {
-        if (title.trim() !== '') {
+        if (title.trim() !== "") {
             addItem(title);
-            setTitle('');
+            setTitle("");
         } else {
-            setError('Title is required');
+            setError("Title is required");
         }
     }
 
@@ -57,8 +57,8 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'row',
-        alignItems: 'center',
+        flexDirection: "row",
+        alignItems: "center",
         gap: 8,
     },
     inputContainer: {
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         padding: 8,
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: "#ccc",
         borderRadius: 4,
     },
     errorInput: {
-        borderColor: 'red',
+        borderColor: "red",
     },
     errorText: {
-        color: 'red',
+        color: "red",
         fontSize: 12,
     },
     button: {
