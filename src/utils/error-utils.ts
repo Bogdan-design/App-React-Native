@@ -1,4 +1,4 @@
-import {setAppErrorAC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../app/app-reducer'
+import {setAppErrorAC, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../state/app-reducer'
 import {ResponseType} from '../api/todolists-api'
 import {Dispatch} from 'redux'
 
