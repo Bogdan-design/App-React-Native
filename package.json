@@ -15,7 +15,9 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@babel/runtime": "^7.29.7",
     "@expo/vector-icons": "^14.0.2",
+    "@react-native/assets-registry": "^0.86.0",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.2",
     "expo": "~51.0.22",
