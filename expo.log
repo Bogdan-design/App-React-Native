@@ -1,0 +1,26 @@
+Starting project at /app
+(node:412134) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Starting Metro Bundler
+The following packages should be updated for best compatibility with the installed expo version:
+  @expo/vector-icons@14.0.2 - expected version: ^14.0.3
+  expo@51.0.22 - expected version: ~51.0.39
+  expo-font@12.0.9 - expected version: ~12.0.10
+  expo-router@3.5.18 - expected version: ~3.5.24
+  expo-splash-screen@0.27.5 - expected version: ~0.27.7
+  react-native@0.74.3 - expected version: 0.74.5
+  jest-expo@51.0.3 - expected version: ~51.0.4
+Your project may not work correctly until you install the expected versions of the packages.
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+λ Bundled 6252ms node_modules/expo-router/node/render.js (947 modules)
+λ  WARN  props.pointerEvents is deprecated. Use style.pointerEvents
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  TouchableOpacity is deprecated. Please use Pressable.
+λ  WARN  accessibilityDisabled is deprecated.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  accessibilityRole is deprecated. Use role.
+λ  WARN  focusable is deprecated.
+Web Bundled 8422ms node_modules/expo-router/entry.js (934 modules)
+Web Bundled 10399ms node_modules/expo-router/entry.js (965 modules)
+ LOG  [web] Logs will appear in the browser console
