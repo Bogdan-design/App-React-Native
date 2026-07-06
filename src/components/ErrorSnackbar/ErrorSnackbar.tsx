@@ -1,6 +1,6 @@
 // import React from 'react';
-// import {setAppErrorAC} from '../../app/app-reducer';
-// import {useAppDispatch, useAppSelector} from '../../app/store';
+// import {setAppErrorAC} from '../../state/app-reducer';
+// import {useAppDispatch, useAppSelector} from '../../state/store';
 //
 // const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 //     props, ref) {

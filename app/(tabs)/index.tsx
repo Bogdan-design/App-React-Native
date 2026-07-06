@@ -2,9 +2,9 @@ import {StyleSheet} from 'react-native';
 
 import React from "react";
 import {ThemedView} from '@/components/ThemedView';
-import {MainApp} from "@/src/app/MainApp";
+import {MainApp} from "@/src/state/MainApp";
 import {Provider} from "react-redux";
-import {store} from '@/src/app/store'
+import {store} from '@/src/state/store'
 
 export default function HomeScreen() {
     return (

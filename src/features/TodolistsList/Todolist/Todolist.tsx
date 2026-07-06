@@ -5,7 +5,7 @@ import {Task} from './Task/Task'
 import {TaskStatuses, TaskType} from '@/src/api/todolists-api'
 import {FilterValuesType, TodolistDomainType} from '../todolists-reducer'
 import {fetchTasksTC} from '../tasks-reducer'
-import {useAppDispatch} from "@/src/app/store";
+import {useAppDispatch} from "@/src/state/store";
 import {ThemedView} from "@/components/ThemedView";
 import {ThemedText} from "@/components/ThemedText";
 
