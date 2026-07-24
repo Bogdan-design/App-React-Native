@@ -1,0 +1,3 @@
+## 2026-07-24 - [Expo Router Route Clean Up and AddItemForm Accessibility]
+**Learning:** Placing non-route files (like `.test.ts` and `.stories.tsx`) inside the Expo Router directory (e.g. `src/app`) causes the Metro bundler to process them, leading to test-environment-related runtime errors like `beforeEach is not defined`. Additionally, web-ported components often use generic static placeholders instead of native components.
+**Action:** Always structure non-route and test files outside the Expo Router's root scope. When building native interactive elements, utilize full accessibility properties (`accessibilityLabel`, `accessibilityRole="button"`, and minimum touch hit target of 44x44) combined with theme hooks for consistent dark/light visual cues.
