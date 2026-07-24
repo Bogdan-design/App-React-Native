@@ -17,13 +17,11 @@ type TasksType = {
 }
 
 export default function HomeScreen() {
-    return (
-        <Provider store={store}>
-            <ThemedView style={{ flex: 1, padding: 16 }}>
-                <MainApp/>
-            </ThemedView>
-        </Provider>
-    );
+    <Provider store={store}>
+        <ThemedText style={styles.titleContainer}>
+            <MainApp/>
+        </ThemedText>
+    </Provider>
 
     // const [text, setText] = React.useState<string>('Text input');
     // const [show, setShow] = React.useState(0);
