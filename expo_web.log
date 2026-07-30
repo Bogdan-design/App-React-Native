@@ -1,0 +1,65 @@
+Starting project at /app
+(node:97837) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using src/app as the root directory for Expo Router.
+Starting Metro Bundler
+The following packages should be updated for best compatibility with the installed expo version:
+  @expo/vector-icons@14.0.2 - expected version: ^14.0.3
+  expo@51.0.22 - expected version: ~51.0.39
+  expo-font@12.0.9 - expected version: ~12.0.10
+  expo-router@3.5.18 - expected version: ~3.5.24
+  expo-splash-screen@0.27.5 - expected version: ~0.27.7
+  react-native@0.74.3 - expected version: 0.74.5
+  jest-expo@51.0.3 - expected version: ~51.0.4
+Your project may not work correctly until you install the expected versions of the packages.
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+λ Bundled 5525ms node_modules/expo-router/node/render.js (721 modules)
+
+Metro error: beforeEach is not defined
+
+[0m [90m 3 |[39m [36mlet[39m startState[33m:[39m [33mInitialStateType[39m[33m;[39m
+ [90m 4 |[39m
+[31m[1m>[22m[39m[90m 5 |[39m beforeEach(() [33m=>[39m {
+ [90m   |[39m [31m[1m^[22m[39m
+ [90m 6 |[39m     startState [33m=[39m {
+ [90m 7 |[39m         error[33m:[39m [36mnull[39m[33m,[39m
+ [90m 8 |[39m         status[33m:[39m [32m'idle'[39m[0m
+
+Call Stack
+  factory (src/app/app-reducer.test.ts:5)
+  loadModuleImplementation (node_modules/metro-runtime/src/polyfills/require.js:273:5)
+  guardedLoadModule (node_modules/metro-runtime/src/polyfills/require.js:173:21)
+  require (node_modules/metro-runtime/src/polyfills/require.js:89:7)
+  Object.get [as ./app-reducer.test.ts] (src/app:5:63)
+  contextModule (src/app:11:15)
+  Object.loadRoute (node_modules/expo-router/build/getRoutesCore.js:71:28)
+  getDirectoryTree (node_modules/expo-router/build/getRoutesCore.js:83:27)
+  getRoutes (node_modules/expo-router/build/getRoutesCore.js:19:27)
+  getRoutes (node_modules/expo-router/build/getRoutes.js:18:41)
+Web Bundled 7709ms node_modules/expo-router/entry.js (788 modules)
+Web Bundled 1368ms node_modules/expo-router/_error.js (308 modules)
+λ Bundled 609ms node_modules/expo-router/node/render.js (1 module)
+Web Bundled 1254ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 12939ms node_modules/expo-router/entry.js (788 modules)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 152ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  TouchableOpacity is deprecated. Please use Pressable.
+λ  WARN  accessibilityDisabled is deprecated.
+λ  WARN  accessibilityRole is deprecated. Use role.
+λ  WARN  focusable is deprecated.
+Web Bundled 812ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 81ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 256ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  TouchableOpacity is deprecated. Please use Pressable.
+λ  WARN  accessibilityDisabled is deprecated.
+λ  WARN  accessibilityRole is deprecated. Use role.
+λ  WARN  focusable is deprecated.
+Web Bundled 800ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 231ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
