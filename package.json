@@ -9,13 +9,16 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build": "npx expo export -p web"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@babel/runtime": "^8.0.0",
     "@expo/vector-icons": "^14.0.2",
+    "@react-native/assets-registry": "^0.86.2",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.2",
     "expo": "~51.0.22",
