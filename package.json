@@ -9,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "build": "npx expo export -p web"
   },
   "jest": {
     "preset": "jest-expo"
@@ -42,6 +43,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/runtime": "^8.0.0",
+    "@react-native/assets-registry": "^0.86.2",
     "@types/jest": "^29.5.12",
     "@types/react": "~18.2.45",
     "@types/react-test-renderer": "^18.0.7",
