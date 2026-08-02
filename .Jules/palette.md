@@ -1,3 +1,0 @@
-## 2026-08-02 - Expo Router Test File Routing Conflict
-**Learning:** In projects where Expo Router is configured to use `src/app` as the root directory, any files (including test files `.test.ts` or story files `.stories.tsx`) placed inside the routing tree are processed as active routes. When Expo Router compiles or renders the static routes, executing these test files without a testing context causes the build to fail with fatal runtime crashes (e.g., `beforeEach is not defined` or `expect is not defined`).
-**Action:** Always place test files inside `__tests__` subdirectories within the routing tree or completely outside the `src/app` routing tree, as Expo Router automatically ignores `__tests__` folders, ensuring a smooth build and stable routing.
