@@ -8,6 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "build": "expo export -p web",
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
@@ -15,7 +16,9 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@babel/runtime": "^8.0.0",
     "@expo/vector-icons": "^14.0.2",
+    "@react-native/assets-registry": "0.74.85",
     "@react-navigation/native": "^6.0.2",
     "axios": "^1.7.2",
     "expo": "~51.0.22",

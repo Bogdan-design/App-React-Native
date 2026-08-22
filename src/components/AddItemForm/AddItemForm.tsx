@@ -1,69 +1,54 @@
-import React, { useState } from 'react';
-import { StyleSheet, TextInput, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { ThemedView } from "@/components/ThemedView";
-import { ThemedText } from "@/components/ThemedText";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
+import {ThemedView} from "@/components/ThemedView";
+import {ThemedText} from "@/components/ThemedText";
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
     disabled?: boolean
 }
 
-export const AddItemForm = React.memo(function AddItemForm({addItem, disabled = false}: AddItemFormPropsType) {
+export const AddItemForm = React.memo(function ({addItem, disabled = false}: AddItemFormPropsType) {
+    // console.log('AddItemForm called')
+
     let [title, setTitle] = useState('')
     let [error, setError] = useState<string | null>(null)
 
-    const textColor = useThemeColor({}, 'text');
-    const tintColor = useThemeColor({}, 'tint');
-    const iconColor = useThemeColor({ light: '#687076', dark: '#9BA1A6' }, 'icon');
-
     const addItemHandler = () => {
         if (title.trim() !== '') {
-            addItem(title.trim());
+            addItem(title);
             setTitle('');
         } else {
             setError('Title is required');
         }
     }
 
-    const onChangeHandler = (text: string) => {
-        if (error !== null) setError(null);
-        setTitle(text);
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.currentTarget.value)
     }
 
-    return <ThemedView style={styles.container}>
-        <ThemedView style={styles.inputContainer}>
-            <TextInput
-                style={[styles.input, { color: textColor, borderColor: error ? 'red' : '#ccc' }]}
-                value={title}
-                onChangeText={onChangeHandler}
-                onSubmitEditing={addItemHandler}
-                placeholder="Enter title..."
-                placeholderTextColor={iconColor}
-                editable={!disabled}
-                accessibilityLabel="New item title input"
-            />
-            <TouchableOpacity
-                style={[styles.button, disabled && styles.disabled]}
-                onPress={addItemHandler}
-                disabled={disabled}
-                accessibilityRole="button"
-                accessibilityLabel="Add item"
-                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            >
-                <Ionicons name="add-circle" size={32} color={disabled ? iconColor : tintColor} />
-            </TouchableOpacity>
-        </ThemedView>
-        {error && <ThemedText style={styles.errorText}>{error}</ThemedText>}
+    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (error !== null) {
+            setError(null);
+        }
+        if (e.charCode === 13) {
+            addItemHandler();
+        }
+    }
+
+    return <ThemedView>
+        <ThemedText>input</ThemedText>
+        <ThemedText>add</ThemedText>
+        {/*<TextField variant="outlined"*/}
+        {/*           disabled={disabled}*/}
+        {/*           error={!!error}*/}
+        {/*           value={title}*/}
+        {/*           onChange={onChangeHandler}*/}
+        {/*           onKeyPress={onKeyPressHandler}*/}
+        {/*           label="Title"*/}
+        {/*           helperText={error}*/}
+        {/*/>*/}
+        {/*<IconButton color="primary" onClick={addItemHandler} disabled={disabled}>*/}
+        {/*    <AddBox/>*/}
+        {/*</IconButton>*/}
     </ThemedView>
 })
-
-const styles = StyleSheet.create({
-    container: { marginVertical: 8 },
-    inputContainer: { flexDirection: 'row', alignItems: 'center', gap: 8 },
-    input: { flex: 1, borderWidth: 1, borderRadius: 6, paddingHorizontal: 12, paddingVertical: 8, fontSize: 16 },
-    button: { padding: 4, alignItems: 'center', justifyContent: 'center' },
-    disabled: { opacity: 0.5 },
-    errorText: { color: 'red', fontSize: 12, marginTop: 4 },
-});
