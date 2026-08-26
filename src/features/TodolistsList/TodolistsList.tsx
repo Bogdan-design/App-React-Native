@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react'
-import {useAppDispatch, useAppSelector} from '../../app/store'
+import {useAppDispatch, useAppSelector} from '../../core/store'
 import {
     addTodolistTC,
     changeTodolistFilterAC,
