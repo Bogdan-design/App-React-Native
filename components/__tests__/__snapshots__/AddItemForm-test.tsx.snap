@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddItemForm renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#fff",
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "backgroundColor": "#fff",
+        },
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "gap": 8,
+        },
+      ]
+    }
+  >
+    <TextInput
+      accessibilityLabel="Item title input"
+      editable={true}
+      onChangeText={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Enter title..."
+      placeholderTextColor="#888"
+      style={
+        [
+          {
+            "borderRadius": 8,
+            "borderWidth": 1,
+            "flex": 1,
+            "fontSize": 16,
+            "paddingHorizontal": 12,
+            "paddingVertical": 8,
+          },
+          {
+            "borderColor": undefined,
+            "color": "#11181C",
+          },
+        ]
+      }
+      value=""
+    />
+    <View
+      accessibilityLabel="Add item"
+      accessibilityRole="button"
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": false,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      hitSlop={
+        {
+          "bottom": 8,
+          "left": 8,
+          "right": 8,
+          "top": 8,
+        }
+      }
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "alignItems": "center",
+          "justifyContent": "center",
+          "minHeight": 44,
+          "minWidth": 44,
+          "opacity": 1,
+          "padding": 4,
+        }
+      }
+    >
+      <Text />
+    </View>
+  </View>
+</View>
+`;
