@@ -1,0 +1,41 @@
+Starting project at /app
+(node:119235) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using src/app as the root directory for Expo Router.
+Starting Metro Bundler
+The following packages should be updated for best compatibility with the installed expo version:
+  @expo/vector-icons@14.0.2 - expected version: ^14.0.3
+  expo@51.0.22 - expected version: ~51.0.39
+  expo-font@12.0.9 - expected version: ~12.0.10
+  expo-router@3.5.18 - expected version: ~3.5.24
+  expo-splash-screen@0.27.5 - expected version: ~0.27.7
+  react-native@0.74.3 - expected version: 0.74.5
+  jest-expo@51.0.3 - expected version: ~51.0.4
+Your project may not work correctly until you install the expected versions of the packages.
+Waiting on http://localhost:8081
+Logs for your project will appear below.
+λ Bundled 4816ms node_modules/expo-router/node/render.js (750 modules)
+Web Bundled 5544ms node_modules/expo-router/entry.js (786 modules)
+Web Bundled 7297ms node_modules/expo-router/entry.js (788 modules)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 142ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  accessibilityRole is deprecated. Use role.
+Web Bundled 2051ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 88ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 225ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  accessibilityRole is deprecated. Use role.
+Web Bundled 810ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 144ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console
+λ Bundled 25ms node_modules/expo-router/node/render.js (1 module)
+λ  WARN  editable is deprecated. Use readOnly.
+λ  WARN  accessibilityLabel is deprecated. Use aria-label.
+λ  WARN  accessibilityRole is deprecated. Use role.
+Web Bundled 340ms node_modules/expo-router/entry.js (1 module)
+Web Bundled 44ms node_modules/expo-router/entry.js (1 module)
+ LOG  [web] Logs will appear in the browser console

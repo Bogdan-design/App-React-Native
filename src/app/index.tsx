@@ -5,7 +5,7 @@ import { MainApp } from "@/src/app/MainApp";
 import { Provider } from "react-redux";
 import { store } from '@/src/app/store';
 
-export default function HomeScreen() {
+export default function IndexPage() {
     return (
         <Provider store={store}>
             <ThemedView style={styles.container}>
