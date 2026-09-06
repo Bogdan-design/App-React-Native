@@ -1,11 +1,11 @@
 import React from "react";
 import { StyleSheet } from 'react-native';
 import { ThemedView } from '@/components/ThemedView';
-import { MainApp } from "@/src/app/MainApp";
+import { MainApp } from "./MainApp";
 import { Provider } from "react-redux";
-import { store } from '@/src/app/store';
+import { store } from './store';
 
-export default function HomeScreen() {
+export default function IndexScreen() {
     return (
         <Provider store={store}>
             <ThemedView style={styles.container}>
