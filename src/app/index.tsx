@@ -4,7 +4,7 @@ import { MainApp } from "@/src/app/MainApp";
 import { Provider } from "react-redux";
 import { store } from '@/src/app/store';
 
-export default function HomeScreen() {
+export default function Index() {
     return (
         <Provider store={store}>
             <ThemedView style={{ flex: 1 }}>
