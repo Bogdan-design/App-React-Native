@@ -21,7 +21,7 @@ type PropsType = {
     changeTodolistTitle: (id: string, newTitle: string) => void
 }
 
-export const Todolist = React.memo(function ({...props}: PropsType) {
+export const Todolist = React.memo(function Todolist({...props}: PropsType) {
     console.log('Todolist called')
 
     const dispatch = useAppDispatch()
@@ -58,9 +58,6 @@ export const Todolist = React.memo(function ({...props}: PropsType) {
     return <ThemedView>
         <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
         <ThemedText>Del</ThemedText>
-            {/*<IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>*/}
-            {/*    <Delete/>*/}
-            {/*</IconButton>*/}
 
         <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'}/>
         <ThemedView>
@@ -72,22 +69,6 @@ export const Todolist = React.memo(function ({...props}: PropsType) {
                 />)
             }
         </ThemedView>
-        {/*<div style={{paddingTop: '10px'}}>*/}
-        {/*    <Button variant={props.todolist.filter === 'all' ? 'outlined' : 'text'}*/}
-        {/*            onClick={onAllClickHandler}*/}
-        {/*            color={'inherit'}*/}
-        {/*    >All*/}
-        {/*    </Button>*/}
-        {/*    <Button variant={props.todolist.filter === 'active' ? 'outlined' : 'text'}*/}
-        {/*            onClick={onActiveClickHandler}*/}
-        {/*            color={'primary'}>Active*/}
-        {/*    </Button>*/}
-        {/*    <Button variant={props.todolist.filter === 'completed' ? 'outlined' : 'text'}*/}
-        {/*            onClick={onCompletedClickHandler}*/}
-        {/*            color={'secondary'}>Completed*/}
-        {/*    </Button>*/}
-        {/*</div>*/}
     </ThemedView>
 })
-
-
+Todolist.displayName = 'Todolist';
