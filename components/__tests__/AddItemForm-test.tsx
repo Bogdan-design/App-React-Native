@@ -1,6 +1,6 @@
 import * as React from 'react';
 import renderer from 'react-test-renderer';
-import { AddItemForm } from '../AddItemForm';
+import { AddItemForm } from '../../src/components/AddItemForm/AddItemForm';
 
 describe('AddItemForm Component', () => {
   it('renders correctly with accessibility props', () => {
