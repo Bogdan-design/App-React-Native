@@ -1,0 +1,3 @@
+## 2025-05-18 - Replacing Placeholder Text with Accessible Native Controls
+**Learning:** In React Native Expo ports, text placeholders like "input" or "add" lack interactive controls and keyboard submit functionality. Using `TextInput` with `onSubmitEditing` and `TouchableOpacity` with `@expo/vector-icons` (plus `accessibilityLabel` & `accessibilityRole="button"`) restores full keyboard navigation and screen reader usability.
+**Action:** Always complement `TextInput` with `onSubmitEditing` for enter-key form submission and wrap icon buttons in `TouchableOpacity` with explicit 44x44 minimum hit targets and accessibility labels.
