@@ -1,0 +1,3 @@
+## 2025-05-18 - Accessibility and UX in Ported Form Components
+**Learning:** Ported components in React Native apps often retain placeholder `ThemedText` nodes from web prototypes. Replacing these with native `TextInput` and interactive `TouchableOpacity` wrapped `Ionicons` drastically improves screen reader feedback, keyboard navigation support, and visual polish.
+**Action:** When working with input forms in Expo/React Native, ensure inputs use `onChangeText`/`onSubmitEditing` with theme colors via `useThemeColor`, and icon buttons have `accessibilityLabel`, `accessibilityRole="button"`, and sufficient touch target size (at least 44x44).
