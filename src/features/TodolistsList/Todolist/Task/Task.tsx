@@ -1,8 +1,11 @@
 import React, {ChangeEvent, useCallback} from 'react'
+import {TouchableOpacity, StyleSheet} from 'react-native'
+import Ionicons from '@expo/vector-icons/Ionicons'
 import {EditableSpan} from '@/src/components/EditableSpan/EditableSpan'
 import {TaskStatuses, TaskType} from '@/src/api/todolists-api'
-import {ThemedView} from "@/components/ThemedView";
-import {ThemedText} from "@/components/ThemedText";
+import {ThemedView} from "@/components/ThemedView"
+import {ThemedText} from "@/components/ThemedText"
+import {useThemeColor} from "@/hooks/useThemeColor"
 
 type TaskPropsType = {
     task: TaskType
@@ -12,31 +15,55 @@ type TaskPropsType = {
     removeTask: (taskId: string, todolistId: string) => void
 }
 export const Task = React.memo((props: TaskPropsType) => {
-    const onClickHandler = useCallback(() => props.removeTask(props.task.id, props.todolistId), [props.task.id, props.todolistId]);
+    const {task, todolistId, removeTask, changeTaskStatus, changeTaskTitle} = props;
+    const iconColor = useThemeColor({ light: '#666666', dark: '#999999' }, 'text');
+
+    const onClickHandler = useCallback(() => removeTask(task.id, todolistId), [task.id, todolistId, removeTask]);
 
     const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         let newIsDoneValue = e.currentTarget.checked
-        props.changeTaskStatus(props.task.id, newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New, props.todolistId)
-    }, [props.task.id, props.todolistId]);
+        changeTaskStatus(task.id, newIsDoneValue ? TaskStatuses.Completed : TaskStatuses.New, todolistId)
+    }, [task.id, todolistId, changeTaskStatus]);
 
     const onTitleChangeHandler = useCallback((newValue: string) => {
-        props.changeTaskTitle(props.task.id, newValue, props.todolistId)
-    }, [props.task.id, props.todolistId]);
+        changeTaskTitle(task.id, newValue, todolistId)
+    }, [task.id, todolistId, changeTaskTitle]);
 
-    return <ThemedView key={props.task.id}>
+    return <ThemedView key={task.id} style={styles.container}>
 
-        {/*className={props.task.status === TaskStatuses.Completed ? 'is-done' : ''}*/}
+        {/*className={task.status === TaskStatuses.Completed ? 'is-done' : ''}*/}
         <ThemedText>Checkbox</ThemedText>
         {/*<Checkbox*/}
-        {/*    checked={props.task.status === TaskStatuses.Completed}*/}
+        {/*    checked={task.status === TaskStatuses.Completed}*/}
         {/*    color="primary"*/}
         {/*    onChange={onChangeHandler}*/}
         {/*/>*/}
 
-        <EditableSpan value={props.task.title} onChange={onTitleChangeHandler}/>
-        <ThemedText>Del</ThemedText>
-        {/*<IconButton onClick={onClickHandler}>*/}
-        {/*    <Delete/>*/}
-        {/*</IconButton>*/}
+        <EditableSpan value={task.title} onChange={onTitleChangeHandler}/>
+        <TouchableOpacity
+            onPress={onClickHandler}
+            style={styles.deleteButton}
+            accessibilityRole="button"
+            accessibilityLabel={`Delete task ${task.title}`}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+            <Ionicons name="trash-outline" size={20} color={iconColor} />
+        </TouchableOpacity>
     </ThemedView>
+})
+
+Task.displayName = 'Task'
+
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    deleteButton: {
+        padding: 8,
+        minWidth: 44,
+        minHeight: 44,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 })
