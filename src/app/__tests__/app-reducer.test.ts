@@ -1,11 +1,11 @@
-import {appReducer, InitialStateType, setAppErrorAC, setAppStatusAC} from './app-reducer'
+import {appReducer, InitialStateType, setAppErrorAC, setAppStatusAC} from '../app-reducer'
 
 let startState: InitialStateType;
 
 beforeEach(() => {
     startState = {
-        error: null,
-        status: 'idle'
+        status: 'idle',
+        error: null
     }
 })
 
@@ -22,4 +22,3 @@ test('correct status should be set', () => {
 
     expect(endState.status).toBe('loading');
 })
-

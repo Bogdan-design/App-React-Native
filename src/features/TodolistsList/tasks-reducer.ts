@@ -55,7 +55,7 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistId: string) => ({
 } as const)
 
 // thunks
-export const fetchTasksTC = (todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>) => {
+export const fetchTasksTC = (todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppStatusActionType>) => {
     dispatch(setAppStatusAC('loading'))
     todolistsAPI.getTasks(todolistId)
         .then((res) => {
@@ -63,18 +63,12 @@ export const fetchTasksTC = (todolistId: string) => (dispatch: Dispatch<ActionsT
             dispatch(setTasksAC(tasks, todolistId))
             dispatch(setAppStatusAC('succeeded'))
         })
-        .catch((error) => {
-            handleServerNetworkError(error, dispatch)
-        })
 }
-export const removeTaskTC = (taskId: string, todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppErrorActionType | SetAppStatusActionType>) => {
+export const removeTaskTC = (taskId: string, todolistId: string) => (dispatch: Dispatch<ActionsType>) => {
     todolistsAPI.deleteTask(todolistId, taskId)
         .then(res => {
             const action = removeTaskAC(taskId, todolistId)
             dispatch(action)
-        })
-        .catch((error) => {
-            handleServerNetworkError(error, dispatch)
         })
 }
 export const addTaskTC = (title: string, todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppErrorActionType | SetAppStatusActionType>) => {
@@ -99,6 +93,7 @@ export const updateTaskTC = (taskId: string, domainModel: UpdateDomainTaskModelT
         const state = getState()
         const task = state.tasks[todolistId].find(t => t.id === taskId)
         if (!task) {
+            //throw new Error("task not found in the state");
             console.warn('task not found in the state')
             return
         }
