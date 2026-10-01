@@ -1,0 +1,3 @@
+## 2025-05-18 - Replacing Text Placeholders with Accessible Native Input Controls
+**Learning:** Legacy web-to-mobile ports often leave plain `<ThemedText>` placeholders ("input", "add") or web event handlers (`onChange`, `onKeyPress`). Replacing these placeholders with React Native's `TextInput` and `TouchableOpacity` (with `Ionicons`) significantly improves UX, while supplying `accessibilityLabel`, `accessibilityRole="button"`, and minimum 44x44 target sizes ensures mobile screen reader compatibility.
+**Action:** When working on input components ported from web React, always replace plain text placeholders with accessible React Native controls (`TextInput`, `TouchableOpacity`/`Pressable`) and native events (`onChangeText`, `onSubmitEditing`).
