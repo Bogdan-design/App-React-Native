@@ -41,6 +41,9 @@ export const changeTodolistEntityStatusAC = (id: string, status: RequestStatusTy
     type: 'CHANGE-TODOLIST-ENTITY-STATUS', id, status } as const)
 export const setTodolistsAC = (todolists: Array<TodolistType>) => ({type: 'SET-TODOLISTS', todolists} as const)
 
+import {handleServerNetworkError} from '../../utils/error-utils'
+import {SetAppErrorActionType} from '../../app/app-reducer'
+
 // thunks
 export const fetchTodolistsTC = () => {
     return (dispatch: ThunkDispatch) => {
@@ -49,6 +52,9 @@ export const fetchTodolistsTC = () => {
             .then((res) => {
                 dispatch(setTodolistsAC(res.data))
                 dispatch(setAppStatusAC('succeeded'))
+            })
+            .catch((error) => {
+                handleServerNetworkError(error, dispatch)
             })
     }
 }
@@ -101,4 +107,4 @@ export type TodolistDomainType = TodolistType & {
     filter: FilterValuesType
     entityStatus: RequestStatusType
 }
-type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType>
+type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>
