@@ -1,0 +1,3 @@
+## 2025-05-10 - Upgrading Web Placeholder Components to Native Accessible Elements
+**Learning:** In React Native Expo applications ported from web projects, placeholder `<ThemedText>` elements (e.g., "input" and "add") degrade accessibility and usability. Replacing them with native `TextInput` and `TouchableOpacity` with `Ionicons` requires explicit `accessibilityRole="button"`, `accessibilityLabel`, and `editable={!disabled}` props rather than standard HTML web attributes like `aria-label` or `disabled`.
+**Action:** Always use native React Native components (`TextInput`, `TouchableOpacity`, `Checkbox`) with dynamic theme colors via `useThemeColor` and proper accessibility props (`accessibilityLabel`, `accessibilityRole`) when refactoring interactive form controls.
