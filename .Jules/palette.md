@@ -1,0 +1,3 @@
+## 2025-05-18 - Replacing Placeholder Text with Native Inputs
+**Learning:** In ported web applications, interactive forms like `AddItemForm` may contain placeholder static `ThemedText` tags instead of functional inputs, creating an inaccessible and non-interactive UI. Replacing them with native `TextInput` and `TouchableOpacity` with `Ionicons`, `accessibilityLabel`, `accessibilityRole="button"`, and `hitSlop` restores full accessibility and user interaction.
+**Action:** Always check form components for static text placeholders and convert them to fully interactive React Native components with proper accessibility attributes and theme hooks.
