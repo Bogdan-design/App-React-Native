@@ -1,0 +1,3 @@
+## 2025-05-18 - React Native Input and Icon-Button Accessibility in Ported Web Components
+**Learning:** Web-based placeholder text in ported React Native components breaks user interaction. Replacing text placeholders with native `TextInput` and `TouchableOpacity` icon buttons requires explicit `accessibilityLabel` and `accessibilityRole="button"` attributes and `editable={!disabled}` for accessible screen reader interactions.
+**Action:** Always provide explicit accessibility labels, touch targets of at least 44x44, and native input handlers when implementing inputs and icon buttons in React Native.
