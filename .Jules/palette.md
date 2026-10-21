@@ -1,0 +1,3 @@
+## 2025-05-18 - Accessible TextInput and Add Button pattern in React Native
+**Learning:** In React Native Expo, replacing raw web placeholder text with `TextInput` and `TouchableOpacity` (with `@expo/vector-icons`) requires explicit `accessibilityLabel`, `accessibilityHint`, `accessibilityRole="button"`, and `accessibilityState={{ disabled }}` alongside a minimum hit area of 44x44 points for touch target accessibility.
+**Action:** When converting placeholder components or creating form inputs, always provide `accessibilityLabel`, `onSubmitEditing`, and `minHeight: 44`/`minWidth: 44` touch targets.
