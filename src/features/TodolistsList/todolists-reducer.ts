@@ -50,6 +50,9 @@ export const fetchTodolistsTC = () => {
                 dispatch(setTodolistsAC(res.data))
                 dispatch(setAppStatusAC('succeeded'))
             })
+            .catch((err) => {
+                dispatch(setAppStatusAC('failed'))
+            })
     }
 }
 export const removeTodolistTC = (todolistId: string) => {
