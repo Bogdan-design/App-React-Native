@@ -1,31 +1,42 @@
 import React from 'react'
 import './App.css'
 import {TodolistsList} from '../features/TodolistsList/TodolistsList'
-import {useAppSelector} from './store'
-import {RequestStatusType} from './app-reducer'
+import {useAppDispatch, useAppSelector} from './store'
+import {setAppErrorAC} from './app-reducer'
 import {ThemedView} from "@/components/ThemedView";
+import {ThemedText} from "@/components/ThemedText";
+import {Pressable, StyleSheet} from "react-native";
 
+export const MainApp = () => {
+    const dispatch = useAppDispatch()
+    const error = useAppSelector<string | null>((state) => state.app.error)
 
-export const MainApp =()=> {
-    const status = useAppSelector<RequestStatusType>((state) => state.app.status)
     return (
-        <ThemedView>
-            {/*<ErrorSnackbar/>*/}
-            {/*<AppBar position="static">*/}
-            {/*    <Toolbar>*/}
-            {/*        <IconButton edge="start" color="inherit" aria-label="menu">*/}
-            {/*            <Menu/>*/}
-            {/*        </IconButton>*/}
-            {/*        <Typography variant="h6">*/}
-            {/*            News*/}
-            {/*        </Typography>*/}
-            {/*        <Button color="inherit">Login</Button>*/}
-            {/*    </Toolbar>*/}
-            {/*    {status === 'loading' && <LinearProgress/>}*/}
-            {/*</AppBar>*/}
-            <ThemedView>
-                <TodolistsList/>
-            </ThemedView>
+        <ThemedView style={styles.container}>
+            {error && (
+                <Pressable style={styles.errorBanner} onPress={() => dispatch(setAppErrorAC(null))}>
+                    <ThemedText style={styles.errorText}>{error} (Tap to dismiss)</ThemedText>
+                </Pressable>
+            )}
+            <TodolistsList/>
         </ThemedView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 16,
+    },
+    errorBanner: {
+        backgroundColor: '#ff4d4f',
+        padding: 12,
+        borderRadius: 8,
+        marginBottom: 12,
+    },
+    errorText: {
+        color: '#ffffff',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+})
