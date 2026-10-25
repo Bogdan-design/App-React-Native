@@ -50,19 +50,22 @@ export const fetchTodolistsTC = () => {
                 dispatch(setTodolistsAC(res.data))
                 dispatch(setAppStatusAC('succeeded'))
             })
+            .catch(() => {
+                dispatch(setAppStatusAC('failed'))
+            })
     }
 }
 export const removeTodolistTC = (todolistId: string) => {
     return (dispatch: ThunkDispatch) => {
-        //изменим глобальный статус приложения, чтобы вверху полоса побежала
         dispatch(setAppStatusAC('loading'))
-        //изменим статус конкретного тудулиста, чтобы он мог задизеблить что надо
         dispatch(changeTodolistEntityStatusAC(todolistId, 'loading'))
         todolistsAPI.deleteTodolist(todolistId)
             .then((res) => {
                 dispatch(removeTodolistAC(todolistId))
-                //скажем глобально приложению, что асинхронная операция завершена
                 dispatch(setAppStatusAC('succeeded'))
+            })
+            .catch(() => {
+                dispatch(setAppStatusAC('failed'))
             })
     }
 }
@@ -74,6 +77,9 @@ export const addTodolistTC = (title: string) => {
                 dispatch(addTodolistAC(res.data.data.item))
                 dispatch(setAppStatusAC('succeeded'))
             })
+            .catch(() => {
+                dispatch(setAppStatusAC('failed'))
+            })
     }
 }
 export const changeTodolistTitleTC = (id: string, title: string) => {
@@ -82,6 +88,7 @@ export const changeTodolistTitleTC = (id: string, title: string) => {
             .then((res) => {
                 dispatch(changeTodolistTitleAC(id, title))
             })
+            .catch(() => {})
     }
 }
 
